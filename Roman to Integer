@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class RomanToInteger {
+
+	public static void main(String[] args)
+	{
+		System.out.println(RomanToInteger1("MC"));
+		System.out.println(RomanToInteger1("MCM"));
+		System.out.println(RomanToInteger1("MCMXCIV"));		
+	}
+
+	public static int RomanToInteger1(String s)
+	{
+		int returint = 0;
+		int prevint = 0;
+		
+		for(int i=0; i < s.length(); i++)
+		{	
+			switch(s.charAt(i))
+			{
+				case 'I' : returint += 1; prevint = 1; break;
+				case 'V' : returint += (prevint > 0 && prevint < 5) ? (5 - (prevint*2)) : 5; prevint = 0;  break;
+				case 'X' : returint += (prevint > 0 && prevint < 10) ? (10 - (prevint*2)) : 10; prevint = 10; break;
+				case 'L' : returint += (prevint > 0 && prevint < 50) ? (50 - (prevint*2)) : 50; prevint = 0; break;
+				case 'C' : returint += (prevint > 0 && prevint < 100) ? (100 - (prevint*2)) : 100; prevint = 100; break;
+				case 'D' : returint += (prevint > 0 && prevint < 500) ? (500 - (prevint*2)) : 500; prevint = 0; break;
+				case 'M' : returint += (prevint > 0 && prevint < 1000) ? (1000 - (prevint*2)) : 1000; prevint = 0; break;
+				default: returint = 0; break;
+			}			
+		}		
+
+		return returint;			
+	}
+}
