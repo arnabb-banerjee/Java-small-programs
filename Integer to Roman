@@ -1,0 +1,88 @@
+import java.util.*;
+
+public class IntegerToRoman {
+
+	public static void main(String[] args)
+	{
+		System.out.println(IntegerToRoman1(3));
+		System.out.println(IntegerToRoman1(4));
+		System.out.println(IntegerToRoman1(9));
+		System.out.println(IntegerToRoman1(58));
+		System.out.println(IntegerToRoman1(1994));		
+	}
+
+	public static String IntegerToRoman1(int s)
+	{
+		String returnstring = "";
+		while (s > 0)
+		{
+			if(s >= 1000) 
+			{
+				for(int i = 0;  i < s / 1000; i++) {  returnstring += "M"; }
+				s = s % 1000;	
+			}
+			else if(s >= 900) 
+			{
+				returnstring += "CM";
+				s = s % 900;	
+			}
+			else if(s >= 500) 
+			{
+				returnstring += "D";
+				s = s % 500;	
+			}
+			else if(s >= 400) 
+			{
+				returnstring += "CD";
+				s = s % 400;	
+			}
+			else if(s >= 100) 
+			{
+				for(int i = 0;  i < s / 100; i++) {  returnstring += "C"; }
+				s = s % 100;	
+			}
+			else if(s >= 90) 
+			{
+				returnstring += "XC";
+				s = s % 90;	
+			}
+			else if(s >= 50) 
+			{
+				returnstring += "L";
+				s = s % 50;	
+			}
+			else if(s >= 40) 
+			{
+				returnstring += "XL";
+				s = s % 40;	
+			}
+			else if(s >= 10) 
+			{
+				for(int i = 0;  i < s / 10; i++) {  returnstring += "X"; }
+				s = s % 10;	
+			}
+			else if(s == 9) 
+			{
+				returnstring += "IX";
+				s = 0;	
+			}
+			else if(s >= 5) 
+			{
+				returnstring += "V";
+				s = s % 5;
+			}
+			else if(s == 4) 
+			{
+				returnstring += "IV";
+				s = 0;
+			}
+			else if(s >= 1) 
+			{
+				for(int i = 0;  i < s; i++) {  returnstring += "I"; }
+				s = 0;
+			}
+		}
+
+		return returnstring;			
+	}
+}
